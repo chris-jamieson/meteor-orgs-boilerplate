@@ -1,0 +1,40 @@
+<template name="organisationsUserAddModal">
+  <div class="modal fade">
+    <div class="modal-dialog">
+      {{#autoForm schema=invitationsSchema id="insertOrganisationInvitationForm" type="method" meteormethod="invitations.insert"}}
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title">Add user to organisation</h4>
+          </div>
+
+          <div class="modal-body">
+              {{> afQuickField name='organisationId' value=organisationId type='hidden' }}
+              {{> afQuickField name='emailAddress' }}
+              <div class="row">
+                <div class="col-md-6">
+                  {{> afQuickField name='firstName' }}
+                </div>
+
+                <div class="col-md-6">
+                  {{> afQuickField name='lastName' }}
+                </div>
+              </div>
+              {{> afQuickField name='organisationRole' options=organisationRoleOptions }}
+          </div>
+
+          <div class="modal-footer">
+            <button type="submit" class="btn btn-success">
+              <i class="fa fa-paper-plane"></i>&nbsp;
+              Send Invitation
+            </button>
+            <button type="button" class="btn btn-default" data-dismiss="modal">
+              <i class="fa fa-times"></i>&nbsp;
+              Cancel
+            </button>
+          </div>
+
+        </div>
+      {{ /autoForm }}
+    </div>
+  </div>
+</template>

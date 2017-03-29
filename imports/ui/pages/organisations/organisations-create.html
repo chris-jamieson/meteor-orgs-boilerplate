@@ -1,0 +1,19 @@
+<template name="organisationsCreate">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12 col-md-6 col-md-offset-3">
+        <div class="page-header">
+          <h2>New organisation</h2>
+        </div>
+
+        {{#autoForm collection=organisationsCollection id="insertOrganisationForm" type="method" meteormethod="organisations.insert"}}
+          <fieldset>
+            {{> afQuickField name="name" }}
+            {{> afQuickField name="currency" }}
+          </fieldset>
+          <button type="submit" class="btn btn-success btn-lg btn-block"><i class="fa fa-save"></i>&nbsp; Create organisation</button>
+        {{/autoForm}}
+      </div>
+    </div>
+  </div>
+</template>

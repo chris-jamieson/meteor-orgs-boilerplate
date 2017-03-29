@@ -1,0 +1,32 @@
+<template name="dashboard">
+  <div class="container">
+    {{#if isInRole 'admin'}}
+      <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+          <div class="panel panel-primary">
+            <div class="panel-heading">
+              <h3 class="panel-title">Administration</h3>
+            </div>
+            <div class="panel-body">
+              <div class="row">
+                <div class="col-xs-12 col-sm-4 text-center">
+                  <i class="fa fa-cogs fa-jumbo text-muted"></i>
+                  <br class="xs-visible">
+                  <br class="xs-visible">
+                </div>
+
+                <div class="col-xs-12 col-sm-8">
+                  <a href="{{ pathFor 'admin.dashboard' }}" class="btn btn-primary btn-lg btn-block">
+                    Go to Admin Dashboard &nbsp;<i class="fa fa-tachometer"></i>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    {{ else }}
+      {{ > organisationsSelect }}
+    {{/if}}
+  </div>
+</template>

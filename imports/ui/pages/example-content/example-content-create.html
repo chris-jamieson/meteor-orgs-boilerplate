@@ -1,0 +1,37 @@
+<template name="exampleContentCreate">
+  {{#showPage ready=Template.subscriptionsReady}}
+    <div class="container">
+
+      <div class="row">
+        <div class="col-sm-12">
+          {{> breadcrumb}}
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-12">
+          <div class="page-header">
+            <h2>
+              Create an example content item
+            </h2>
+          </div>
+        </div>
+      </div>
+
+      {{#autoForm schema=exampleContentCollection.insertSchema id="insertExampleContentForm" type="method" meteormethod="exampleContent.insert"}}
+        {{> afFieldInput name='organisationId' value=organisationId type="hidden" }}
+
+        <div class="row">
+          <div class="col-md-12">
+            <fieldset>
+              {{> afQuickField name='text' rows=3 }}
+            </fieldset>
+            <button type="submit" class="btn btn-success btn-lg btn-block">
+              <i class="fa fa-save"></i>&nbsp; Save item
+            </button>
+          </div>
+        </div>
+      {{/autoForm}}
+
+    </div>
+  {{/showPage}}
+</template>

@@ -1,0 +1,13 @@
+<template name="Navbar_user">
+    <li>
+      <a href="{{ pathFor 'profile' }}">
+        Edit profile
+      </a>
+    </li>
+    <li class="hidden-sm hidden-xs">{{ > avatar user=currentUser shape="circle" }}</li>
+    <li class="logout">
+      <a class="sign-out" href="#">
+        Log out
+      </a>
+    </li>
+</template>

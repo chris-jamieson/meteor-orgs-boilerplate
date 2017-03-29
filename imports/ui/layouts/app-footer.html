@@ -1,0 +1,13 @@
+<template name="App_footer">
+    <div class="container">
+        <div class="text-center text-muted">
+            <p>
+                {{ #unless isImpersonating }}
+                &nbsp;
+                {{ else }}
+                <button class="btn btn-warning btn-sm" data-unimpersonate ><i class="fa fa-user-secret"></i>&nbsp; Stop impersonating</button>
+                {{ /unless }}
+            </p>
+        </div>
+    </div>
+</template>

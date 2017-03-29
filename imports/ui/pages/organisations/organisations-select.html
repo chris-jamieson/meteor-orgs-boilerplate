@@ -1,0 +1,60 @@
+<template name="organisationsSelect">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 col-md-offset-3">
+        {{#showPage ready=Template.subscriptionsReady}}
+          {{ #if organisations.count }}
+          <div class="page-header">
+            <h2>
+              {{ #if currentUser.profile.firstName }}
+              Welcome back, {{ currentUser.profile.firstName }}!
+              {{ else }}
+              Welcome back!
+              {{ /if }}
+            </h2>
+          </div>
+          <div class="panel panel-default">
+            <!-- Default panel contents -->
+            <div class="panel-heading">Select organisation</div>
+            <div class="panel-body">
+              <span class="text-muted">
+                Select an organisation, or
+                <a href="{{ pathFor 'organisations.create'}}">create a new organisation</a>.
+              </span>
+            </div>
+
+            <div class="list-group">
+              {{ #each organisations }}
+                <a href="{{ pathFor 'organisations.dashboard' organisationId=this._id }}" class="list-group-item">
+                  {{ name }} <span class="pull-right"><i class="fa fa-chevron-right"></i></span>
+                </a>
+              {{ /each }}
+            </div>
+          </div>
+          {{ else }}
+          <div class="page-header">
+            <h2>
+              Welcome!
+            </h2>
+          </div>
+
+          <p>
+            Your account is not currently linked to any organisations.
+            If you want to join an existing organisation, request an invitation
+            from your organisation's administrator.
+          </p>
+
+          <p>
+            Alternatively you can create a new organisation below.
+          </p>
+          <p>
+            <a href="{{ pathFor 'organisations.create'}}" class="btn btn-primary btn-block">
+              <i class="fa fa-building-o"></i>&nbsp; Create a new organisation
+            </a>
+          </p>
+          {{ /if }}
+        {{/showPage}}
+      </div>
+    </div>
+  </div>
+</template>

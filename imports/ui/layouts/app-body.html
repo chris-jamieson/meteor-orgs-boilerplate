@@ -1,0 +1,11 @@
+<template name="App_body">
+  <header class="print-hidden">
+        {{ > App_navigation }}
+    </header>
+    <main>
+        {{ > Template.dynamic template=main }}
+    </main>
+    <footer class="footer print-hidden">
+        {{ > App_footer }}
+    </footer>
+</template>

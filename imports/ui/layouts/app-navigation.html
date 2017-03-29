@@ -1,0 +1,31 @@
+<template name="App_navigation">
+    <div class="navbar navbar-inverse navbar-no-rounded-corners" role="navigation">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="{{ pathFor 'app.home' }}">
+          <i class="fa fa-smile-o"></i>&nbsp; Example
+        </a>
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+      </div>
+      <div class="navbar-collapse collapse">
+        <ul class="nav navbar-nav navbar-right">
+          {{ #if currentUser }}
+            <li>
+              <a href="{{ pathFor 'app.home' }}">
+                Dashboard
+              </a>
+            </li>
+            {{ > Navbar_admin }}
+            {{ > Navbar_user }}
+          {{ else }}
+            <li><a href="{{ pathFor 'atSignIn' }}">Log in</a></li>
+            <li><a href="{{ pathFor 'atSignUp' }}">Sign up</a></li>
+          {{ /if }}
+        </ul>
+      </div>
+    </div>
+</template>

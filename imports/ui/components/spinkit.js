@@ -1,0 +1,1 @@
+import './spinkit.html';

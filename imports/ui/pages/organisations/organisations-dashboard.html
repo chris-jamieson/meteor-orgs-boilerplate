@@ -1,0 +1,70 @@
+<template name="organisationsDashboard">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12 col-md-6 col-md-offset-3">
+        <div class="page-header">
+          <h2>
+            {{ organisation.name }} dashboard
+
+            {{#isViewer organisationId=(param 'organisationId')}}
+              <button class="btn btn-default btn-sm" title="Organisation settings" disabled="true">
+                <i class="fa fa-cogs"></i>&nbsp;
+              </button>
+            {{else}}
+              <span class="pull-right">
+                <a href="{{ pathFor 'organisations.settings' organisationId=organisation._id }}" class="btn btn-default btn-sm" title="Organisation settings">
+                  <i class="fa fa-cogs"></i>&nbsp;
+                </a>
+              </span>
+            {{/isViewer}}
+          </h2>
+        </div>
+
+        {{#isViewer organisationId=(param 'organisationId')}}
+          <p>You are a viewer in this organisation.</p>
+        {{else}}
+          <p>You have admin permissions in this organisation.</p>
+        {{/isViewer}}
+
+        <!-- Example content panel for this org -->
+        <div class="panel panel-default">
+          <div class="panel-heading">Example content</div>
+          <div class="panel-body">
+            <p>This panel shows all the example content in this organisation</p>
+          </div>
+
+          {{ #if exampleContent.count }}
+            <div class="list-group">
+              {{ #each exampleContent }}
+                <a href="{{ pathFor 'exampleContent.view' exampleContentId=this._id organisationId=organisation._id }}" class="list-group-item">
+                  Text: {{ this.text }}
+                  <span class="pull-right">
+                    <i class="fa fa-chevron-right"></i>
+                  </span>
+                </a>
+              {{ /each }}
+            </div>
+          {{ else }}
+            <div class="jumbotron">
+              <h3>No example content found</h3>
+              <p>
+                No example content was found within this organisation. Create some!
+              </p>
+            </div>
+          {{ /if }}
+          <div class="panel-footer">
+            <div class="text-right">
+              {{#isViewer organisationId=(param 'organisationId')}}
+                <span>Sorry, you don't have permission to create content</span>
+              {{else}}
+                <a class="btn btn-primary" href="{{ pathFor 'exampleContent.create' organisationId=organisation._id }}" role="button">
+                  Create example content
+                </a>
+              {{/isViewer}}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>

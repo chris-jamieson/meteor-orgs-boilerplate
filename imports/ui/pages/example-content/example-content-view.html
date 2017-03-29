@@ -1,0 +1,44 @@
+<template name="exampleContentView">
+  {{#showPage ready=Template.subscriptionsReady}}
+    <div class="container">
+
+      <div class="row">
+        <div class="col-sm-12">
+          {{> breadcrumb}}
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-12">
+          <div class="page-header">
+            <h2>
+              Example content item
+            </h2>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-12">
+          <p>The text field of this example content item is:</p>
+          <div class="well well-sm">
+            {{ exampleContent.text }}
+          </div>
+
+          {{#isViewer organisationId=(param 'organisationId')}}
+            <p>You are a viewer in this organisation, so you may not edit this item.</p>
+          {{else}}
+            <p>You have sufficient permissions in this organisation to edit this item:</p>
+            <a class="btn btn-default" href="{{ pathFor 'exampleContent.edit' exampleContentId=exampleContent._id organisationId=(param 'organisationId')}}">
+              Edit this item
+            </a>
+            &nbsp;
+            <button class="btn btn-danger" name="js-remove-example-content">
+              Delete this item
+            </button>
+          {{/isViewer}}
+        </div>
+      </div>
+
+    </div>
+  {{/showPage}}
+</template>
